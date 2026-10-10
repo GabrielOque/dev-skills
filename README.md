@@ -21,19 +21,17 @@ y se instala de forma independiente.
 
 ## Instalación
 
-Reemplaza `TU-USUARIO` por el usuario u organización de GitHub donde vive este repo.
-
 ### Claude Code — marketplace de plugins (recomendado)
 
 ```text
-/plugin marketplace add TU-USUARIO/dev-skills
+/plugin marketplace add GabrielOque/dev-skills
 /plugin install initial-setup-pdn-stack@dev-skills
 ```
 
 O desde la terminal:
 
 ```bash
-claude plugin marketplace add TU-USUARIO/dev-skills
+claude plugin marketplace add GabrielOque/dev-skills
 claude plugin install initial-setup-pdn-stack@dev-skills
 ```
 
@@ -44,14 +42,14 @@ tus credenciales de git (`gh auth login` o SSH).
 ### Cualquier agente compatible — CLI `skills`
 
 ```bash
-npx skills add TU-USUARIO/dev-skills --skill initial-setup-pdn-stack -a claude-code      # en el proyecto
-npx skills add TU-USUARIO/dev-skills --skill initial-setup-pdn-stack -a claude-code -g   # global
+npx skills add GabrielOque/dev-skills --skill initial-setup-pdn-stack -a claude-code      # en el proyecto
+npx skills add GabrielOque/dev-skills --skill initial-setup-pdn-stack -a claude-code -g   # global
 ```
 
 ### Manual
 
 ```bash
-git clone https://github.com/TU-USUARIO/dev-skills.git
+git clone https://github.com/GabrielOque/dev-skills.git
 cp -r dev-skills/skills/initial-setup-pdn-stack ~/.claude/skills/        # personal
 cp -r dev-skills/skills/initial-setup-pdn-stack <proyecto>/.claude/skills/  # solo un proyecto
 ```
