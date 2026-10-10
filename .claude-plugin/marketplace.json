@@ -1,0 +1,32 @@
+{
+  "name": "dev-skills",
+  "owner": {
+    "name": "TU-NOMBRE-U-ORGANIZACION"
+  },
+  "description": "Skills de ingeniería para montar y hacer crecer proyectos con estándares profesionales.",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "initial-setup-pdn-stack",
+      "source": "./",
+      "strict": false,
+      "description": "Monta back (Django + DRF + PostgreSQL) y front (Next.js) con auth JWT, roles/permisos propios y estructura lista para crecer por módulos.",
+      "version": "1.0.0",
+      "category": "development",
+      "tags": [
+        "django",
+        "django-rest-framework",
+        "nextjs",
+        "postgresql",
+        "jwt",
+        "rbac",
+        "redux-toolkit",
+        "scaffolding"
+      ],
+      "skills": [
+        "./skills/initial-setup-pdn-stack"
+      ],
+      "license": "MIT"
+    }
+  ]
+}

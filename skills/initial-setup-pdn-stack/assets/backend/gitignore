@@ -1,0 +1,33 @@
+# Environment — never commit real values; `.env.example` documents them.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.python-eggs/
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Tests / tooling
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors / OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db

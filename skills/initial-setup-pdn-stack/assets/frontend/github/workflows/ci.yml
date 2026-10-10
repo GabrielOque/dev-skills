@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main, test]
+  pull_request:
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    env:
+      # NEXT_PUBLIC_* are inlined at build time; CI only needs a placeholder.
+      NEXT_PUBLIC_BACKEND_URL: http://localhost:8000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm exec tsc --noEmit
+      - run: pnpm build

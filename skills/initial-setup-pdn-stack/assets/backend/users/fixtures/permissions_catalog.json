@@ -1,0 +1,123 @@
+[
+  {
+    "model": "users.permission",
+    "pk": "a27af035-d32b-5f88-91d2-970d739fa0be",
+    "fields": {
+      "name": "access.users.view",
+      "description": "Ver el listado y el detalle de usuarios.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "b50281fb-194e-534c-83b5-6c1f060dfcb7",
+    "fields": {
+      "name": "access.users.create",
+      "description": "Crear usuarios e invitarlos por correo.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "9e86bfaa-3c20-5fe5-ab4f-5c27d1723024",
+    "fields": {
+      "name": "access.users.edit",
+      "description": "Editar los datos, los roles y los permisos de un usuario. Incluye reenviar la invitación y enviar el restablecimiento de contraseña.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "bbe7b5c2-6ec7-5827-989b-5a7c6a6526bf",
+    "fields": {
+      "name": "access.users.deactivate",
+      "description": "Desactivar o reactivar usuarios. Un usuario desactivado no puede iniciar sesión.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "fadd2a03-8568-57b5-a3c1-b337a8146530",
+    "fields": {
+      "name": "access.roles.view",
+      "description": "Ver el listado y el detalle de roles.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "09500531-c6c9-5395-af34-4664700f8021",
+    "fields": {
+      "name": "access.roles.create",
+      "description": "Crear roles en la organización.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "04bc7941-1765-5ac1-b9fd-b265b628979b",
+    "fields": {
+      "name": "access.roles.edit",
+      "description": "Editar el nombre, la descripción y los permisos de un rol.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "b9913c10-88ae-542b-a7d2-b947ec5dbe98",
+    "fields": {
+      "name": "access.roles.deactivate",
+      "description": "Desactivar o reactivar roles. Un rol desactivado deja de otorgar sus permisos.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "102f3005-7881-5efe-9d01-bea550bf2354",
+    "fields": {
+      "name": "access.permissions.view",
+      "description": "Consultar el catálogo de permisos de la aplicación.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "af1938a6-030f-5b54-88fd-9440f22a05b4",
+    "fields": {
+      "name": "organization.settings.view",
+      "description": "Ver la configuración de la organización.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "users.permission",
+    "pk": "0d9695be-4645-5ef8-b374-a6c1fc680306",
+    "fields": {
+      "name": "organization.settings.edit",
+      "description": "Editar la configuración de la organización.",
+      "archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  }
+]

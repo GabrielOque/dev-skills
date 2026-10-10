@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node (e2e helpers, never committed)
+node_modules/
+
+# Local scratch output of scripts and tests
+/tmp/
+*.log
+
+# Editors / OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# Local Claude Code settings
+.claude/settings.local.json

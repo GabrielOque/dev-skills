@@ -1,0 +1,103 @@
+name: initial-setup-pdn-stack · integration
+
+# Generates both projects from the templates exactly as SKILL.md instructs and
+# proves they work: migrations, permission sync, bootstrap and the test suite
+# against PostgreSQL; lint, type check and production build for the frontend.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/initial-setup-pdn-stack/**"
+      - ".github/workflows/initial-setup-pdn-stack.yml"
+  pull_request:
+    paths:
+      - "skills/initial-setup-pdn-stack/**"
+      - ".github/workflows/initial-setup-pdn-stack.yml"
+  workflow_dispatch:
+
+env:
+  SKILL: ${{ github.workspace }}/skills/initial-setup-pdn-stack
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: acme_platform
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      ENV: local
+      DB_NAME: acme_platform
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: localhost
+      DB_PORT: "5432"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Scaffold
+        run: >-
+          python "$SKILL/scripts/scaffold.py" backend --target "$RUNNER_TEMP/acme-back"
+          --project-name "Acme Platform" --time-zone America/Bogota
+      - name: Install and pin
+        working-directory: ${{ runner.temp }}/acme-back
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -r requirements.txt
+          python "$SKILL/scripts/pin_requirements.py" .
+      - name: Migrate, sync permissions, bootstrap, test
+        working-directory: ${{ runner.temp }}/acme-back
+        run: |
+          PY=.venv/bin/python
+          $PY manage.py check
+          $PY manage.py makemigrations accounts organizations users audit --name initial
+          $PY manage.py makemigrations --check --dry-run
+          $PY manage.py migrate --noinput
+          $PY manage.py sync_permissions
+          $PY manage.py sync_permissions --dry-run
+          $PY manage.py bootstrap_organization --organization "Acme Platform" \
+            --email owner@example.com --first-name Ana --last-name Owner
+          $PY manage.py test --noinput
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Create the Next.js app
+        working-directory: ${{ runner.temp }}
+        run: >-
+          npx --yes create-next-app@latest acme-front --ts --app --eslint --no-src-dir
+          --import-alias "@/*" --use-pnpm --no-tailwind --no-react-compiler
+          --no-agent-feedback --disable-git --yes
+      - name: Overlay the structure
+        run: >-
+          python "$SKILL/scripts/scaffold.py" frontend --target "$RUNNER_TEMP/acme-front"
+          --project-name "Acme Platform" --html-lang es
+      - name: Install, lint, type check, build
+        working-directory: ${{ runner.temp }}/acme-front
+        run: |
+          pnpm add @reduxjs/toolkit react-redux redux-persist axios
+          cp .env.example .env.local
+          pnpm lint
+          pnpm exec tsc --noEmit
+          pnpm build

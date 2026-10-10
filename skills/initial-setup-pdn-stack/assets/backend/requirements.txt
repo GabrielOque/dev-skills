@@ -1,0 +1,23 @@
+# Direct dependencies only. Pin every line to an exact version (==) once the
+# environment is installed — `python <skill>/scripts/pin_requirements.py .`
+# does it from the active virtualenv. Upgrade deliberately, one PR at a time.
+
+# Core
+Django
+gunicorn
+whitenoise
+
+# Database (PostgreSQL through psycopg 3)
+psycopg[binary]
+dj-database-url
+
+# API / auth
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+
+# Storage (S3-compatible, used when AWS_STORAGE_BUCKET_NAME is set)
+django-storages[s3]
+
+# Configuration
+python-dotenv

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"],
+      "@/a": ["./actions/index.ts"],
+      "@/a/*": ["./actions/*"],
+      "@/c/*": ["./components/*"],
+      "@/ctx/*": ["./contexts/*"],
+      "@/h": ["./hooks/index.ts"],
+      "@/h/*": ["./hooks/*"],
+      "@/l": ["./libs/index.ts"],
+      "@/l/*": ["./libs/*"],
+      "@/pc/*": ["./page_components/*"],
+      "@/r/*": ["./redux/*"],
+      "@/t": ["./types/index.ts"],
+      "@/t/*": ["./types/*"]
+    }
+  }
+}
